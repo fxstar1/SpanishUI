@@ -1,0 +1,25 @@
+
+
+:tabedit test.c
+:tabedit spinach_lib.h
+:tabedit candy_lib.h
+:tabedit picture_lib.h
+:tabedit font_lib.h
+:tabedit juice_lib.h
+------------------------------------------------------------
+:r!gcc `pkg-config --cflags --libs gtk+-2.0 libdrm freetype2 libevdev libinput libjpeg libudev` -Wall -O0 -g -D_FILE_OFFSET_BITS=64 -lm -o test test.c 
+------------------------------------------------------------
+:r!dir
+------------------------------------------------------------
+:tabedit /usr/include/xf86drmMode.h
+------------------------------------h------------------------
+SpanishUI 架构
+- spinach (底层组件) <-libdrm
+- candy (图形组件)
+    - font_lib (字符处理) <-freetype2
+    - picture_lib (图片处理) <-libjpeg
+- juice (输入组件)
+------------------------------------------------------------
+:wqall
+
+
